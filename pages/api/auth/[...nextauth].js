@@ -5,7 +5,10 @@ import { connectDatabase } from "../../../helpers/db";
 
 export default NextAuth({
   session: {
-    jwt: true,
+    jwt: {
+      maxAge: 60 * 60 * 24 * 30,
+      secret: process.env.NEXTAUTH_SECRET,
+    },
   },
   providers: [
     CredentialsProvider({
